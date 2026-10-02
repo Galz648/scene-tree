@@ -1,0 +1,7 @@
+.vscode/**
+src/**
+sample-workspace/**
+tsconfig.json
+**/*.map
+.gitignore
+SESSION.md

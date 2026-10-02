@@ -1,0 +1,148 @@
+{
+  "name": "scene-tree",
+  "displayName": "Scene Tree",
+  "description": "Scene tree that opens the TypeScript file tstogd compiled for each .gd script.",
+  "version": "0.0.1",
+  "publisher": "local",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": ["onStartupFinished", "onView:sceneTree"],
+  "main": "./out/extension.js",
+  "contributes": {
+    "views": {
+      "explorer": [
+        {
+          "id": "sceneTree",
+          "name": "Scene Tree",
+          "visibility": "visible"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "sceneTree.refresh",
+        "title": "Refresh Scene Tree",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "sceneTree.createTypeScript",
+        "title": "Create TypeScript",
+        "icon": "$(add)"
+      },
+      {
+        "command": "sceneTree.createNode",
+        "title": "Create node",
+        "icon": "$(add)"
+      },
+      {
+        "command": "sceneTree.markUnique",
+        "title": "Mark as unique",
+        "icon": "$(check)"
+      },
+      {
+        "command": "sceneTree.createRequired",
+        "title": "Create node",
+        "icon": "$(add)"
+      },
+      {
+        "command": "sceneTree.addScript",
+        "title": "Add script",
+        "icon": "$(add)"
+      },
+      {
+        "command": "sceneTree.addShape",
+        "title": "Add shape",
+        "icon": "$(add)"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "sceneTree.refresh",
+          "when": "view == sceneTree",
+          "group": "navigation"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "sceneTree.createTypeScript",
+          "when": "view == sceneTree && viewItem == missingTs",
+          "group": "inline"
+        },
+        {
+          "command": "sceneTree.createTypeScript",
+          "when": "view == sceneTree && viewItem == missingTs",
+          "group": "0_create"
+        },
+        {
+          "command": "sceneTree.createNode",
+          "when": "view == sceneTree && viewItem == missing",
+          "group": "inline"
+        },
+        {
+          "command": "sceneTree.createNode",
+          "when": "view == sceneTree && viewItem == missing",
+          "group": "0_create"
+        },
+        {
+          "command": "sceneTree.markUnique",
+          "when": "view == sceneTree && viewItem == notUnique",
+          "group": "inline"
+        },
+        {
+          "command": "sceneTree.createRequired",
+          "when": "view == sceneTree && viewItem == required",
+          "group": "inline"
+        },
+        {
+          "command": "sceneTree.createRequired",
+          "when": "view == sceneTree && viewItem == required",
+          "group": "0_create"
+        },
+        {
+          "command": "sceneTree.addScript",
+          "when": "view == sceneTree && viewItem == addScript",
+          "group": "inline"
+        },
+        {
+          "command": "sceneTree.addScript",
+          "when": "view == sceneTree && viewItem == addScript",
+          "group": "0_create"
+        },
+        {
+          "command": "sceneTree.addShape",
+          "when": "view == sceneTree && viewItem == addShape",
+          "group": "inline"
+        },
+        {
+          "command": "sceneTree.addShape",
+          "when": "view == sceneTree && viewItem == addShape",
+          "group": "0_create"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Scene Tree",
+      "properties": {
+        "sceneTree.scenePath": {
+          "type": "string",
+          "default": "scenes/main.tscn",
+          "description": "Path to a .tscn file, relative to the workspace folder."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p engine-vendor && tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "map": "node run-map.cjs",
+    "find": "node run-find.cjs",
+    "validate": "node run-validate.cjs"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.4.5"
+  }
+}

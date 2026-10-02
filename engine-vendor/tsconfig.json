@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "ES2022",
+    "outDir": "out",
+    "rootDir": ".",
+    "strict": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "declaration": true,
+    "skipLibCheck": true
+  },
+  "include": [
+    "scene/src/index.ts",
+    "scene-sync/src/parse.ts",
+    "validator/tools/validate-core.ts",
+    "validator/tools/classes.ts",
+    "validator/tools/scene-node.ts",
+    "validator/src/node-types.gen.ts"
+  ]
+}
